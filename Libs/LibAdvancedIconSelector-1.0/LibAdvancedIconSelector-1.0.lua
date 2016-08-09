@@ -645,7 +645,7 @@ end
 -- (NOTE: the icon won't actually be selected until it's found)
 function IconSelectorFrame:SetSelectionByName(texture)
 	self:SetSelectedIcon(nil)
-	self.initialSelection = texture
+	self.initialSelection = LibIconPath_getName(texture)
 	if texture then
 		self.search:RestartSearch()
 	else
@@ -757,6 +757,7 @@ function IconSelectorFrame.private_OnInternalFrameSizeChanged(internalFrame, wid
 				
 				button:SetScript("OnEnter", function(button, motion)
 					if button.texture then
+						button.texture = LibIconPath_getName(button.texture)
 						local keywordString = lib:LookupKeywords(button.texture)
 						local keywords = Helpers.GetTaggedStrings(keywordString, nil)
 						local spells = Helpers.GetTaggedStrings(keywordString, "spell")
@@ -1019,9 +1020,9 @@ function Helpers.CreateDefaultSection(name)
 	if name == "DynamicIcon" then
 		return { count = 1, GetIconInfo = function(index) return index, "Dynamic", "INV_Misc_QuestionMark" end }
 	elseif name == "MacroIcons" then
-		return { count = #MACRO_ICON_FILENAMES, GetIconInfo = function(index) return index, "Macro", MACRO_ICON_FILENAMES[index] end }
-	elseif name == "ItemIcons" then
-		return { count = #ITEM_ICON_FILENAMES, GetIconInfo = function(index) return index, "Item", ITEM_ICON_FILENAMES[index] end }
+		return { count = #MACRO_ICON_FILENAMES, GetIconInfo = function(index) return index, "Macro", LibIconPath_getName(MACRO_ICON_FILENAMES[index]) end }
+	elseif name == "ItemIcons" then	
+		return { count = #ITEM_ICON_FILENAMES, GetIconInfo = function(index) return index, "Item", LibIconPath_getName(ITEM_ICON_FILENAMES[index]) end }
 	end
 end
 
@@ -1175,6 +1176,9 @@ function SearchObject:private_OnSearchTick()
 		end
 
 		local id, kind, texture = self:GetIconInfo(self.searchIndex)
+		
+		texture = LibIconPath_getName(texture)
+		
 		if self.OnIconScanned then self:OnIconScanned(texture, self.searchIndex, id, kind) end
 
 		if texture then
@@ -1286,6 +1290,7 @@ end
 -- Returns true if the given texture / keywords matches the search parameter
 function SearchObject:private_Matches(texture, keywords, parameter)
 	if not parameter then return true end
+	texture = LibIconPath_getName(texture)
 	texture = strlower(texture)
 	keywords = keywords and strlower(keywords)
 	for i = 1, #parameter do		-- OR parameters

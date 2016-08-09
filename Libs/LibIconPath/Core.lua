@@ -16405,11 +16405,11 @@ function LibIconPath_getName(id)
 		--print("found "..name)
 		return name;
 	else
-		if string.match(id, "_") then --just to prevent the lookup of "ability_ambush" etc
+		if string.match(tostring(id), "_") then --just to prevent the lookup of "ability_ambush" etc
 			--print("found complete string, returning it")
 			return id
 		else
-			print("couldnt find "..id)
+			--print("couldnt find "..tostring(id))
 			return "inv_misc_questionmark"
 		end
 		
