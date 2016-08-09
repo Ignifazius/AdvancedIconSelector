@@ -16709,6 +16709,7 @@ local IconDB = {
 	 [1409001] = "achievements_zone_stormheim",
 	 [1409000] = "achievements_zone_highmountain",
 	 [1409002] = "achievements_zone_suramar",
+	 [973893] = "Inv_glove_mail_draenorcrafted_d_01_alliance]"
 }
 
 
@@ -16727,7 +16728,7 @@ function LibIconPath_getName(id)
 			--print("found complete string, returning it")
 			return id
 		else
-			--print("couldnt find "..tostring(id))
+			print("couldnt find "..tostring(id))
 			return "inv_misc_questionmark"
 		end
 		
