@@ -119,7 +119,11 @@ function EquipmentSetPopup:ReplaceEquipmentSetPopup()
 			repeat
 				local texture = OldGetEquipmentSetIconInfo(index)
 				if texture then	-- (skip the first texture, 'cause it's the question mark)
-					tinsert(textures, texture)
+					if (type(texture) == "number") then
+						tinsert(textures, LibIconPath_getName(texture))
+					else
+						tinsert(textures, texture)
+					end
 				end
 				index = index + 1
 			until not texture
