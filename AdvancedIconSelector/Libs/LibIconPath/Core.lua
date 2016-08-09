@@ -16728,7 +16728,7 @@ function LibIconPath_getName(id)
 			--print("found complete string, returning it")
 			return id
 		else
-			print("couldnt find "..tostring(id))
+			--print("couldnt find "..tostring(id))
 			return "inv_misc_questionmark"
 		end
 		
