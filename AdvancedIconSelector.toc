@@ -27,6 +27,7 @@ Libs\AceLocale-3.0\AceLocale-3.0.xml
 Libs\AceAddon-3.0\AceAddon-3.0.xml
 Libs\AceConsole-3.0\AceConsole-3.0.xml
 Libs\LibAdvancedIconSelector-1.0\LibAdvancedIconSelector-1.0.xml
+Libs\LibIconPath\Core.lua
 #@end-no-lib-strip@
 
 # If AddonLoader is installed, make sure the addon isn't loaded until one of the relevant panes is opened, or a chat command is entered.
