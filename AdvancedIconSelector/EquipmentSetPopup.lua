@@ -209,5 +209,5 @@ end
 -- This method gives us control of the result texture, which is why we no longer have to stay ID-sync'd with Blizzard's icon frame.
 function EquipmentSetPopup.GetEquipmentSetIconInfo(index)
 	local _, _, texture = popup.iconsFrame:GetIconInfo(index)
-	return texture
+	return LibIconPath_getIDByName(texture) --numbers only, because... BECAUSE?!?! BLIZZAAARRRDD argh /o\
 end

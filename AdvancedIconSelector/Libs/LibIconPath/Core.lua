@@ -16421,6 +16421,15 @@ function LibIconPath_getPath(id)
 	return "Interface\\Icons\\"..LibIconPath_getName(id);
 end
 
+function LibIconPath_getIDByName(name) --srsly blizzard... why do you make me do this?! -.-
+	for k,v in pairs(IconDB) do
+		if v == name then 
+			return k
+		end
+	end
+	return nil
+end
+
 
 
 
