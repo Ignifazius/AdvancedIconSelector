@@ -128,6 +128,9 @@ end
 function GuildBankPopup.GuildBankPopupFrame_Update(tab)
 	local tabName, tabTexture = GetGuildBankTabInfo(GetCurrentGuildBankTab())
 	if tabTexture then
+		if (type(tabTexture) == "number") then
+			tabTexture = LibIconPath_getName(tabTexture)
+		end
 		-- (we don't need to disable the OK button while searching - if
 		-- selectedIcon is nil, it GuildBankPopupOkayButton_OnClick defaults
 		-- to the current texture)
