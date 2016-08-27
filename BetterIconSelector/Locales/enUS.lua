@@ -1,4 +1,5 @@
 ﻿--[[========================================================================================
+	  BetterIconSelector (by Ignifazius) is a fork of 
       AdvancedIconSelector, a World of Warcraft icon selector replacement with search
       functionality.
       
@@ -24,7 +25,7 @@
       THE SOFTWARE.
     ========================================================================================]]
 
-local L = LibStub:GetLibrary("AceLocale-3.0"):NewLocale("AdvancedIconSelector", "enUS", true)
+local L = LibStub:GetLibrary("AceLocale-3.0"):NewLocale("BetterIconSelector", "enUS", true)
 if not L then return end
 
 -- Note: Although the icon selector may be localized, the search feature will still operate on english filenames and keywords.

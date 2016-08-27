@@ -48,7 +48,7 @@
       to prioritize your keyword library over the one provided by AIS.
     ========================================================================================]]
 
-local ADDON_NAME = "AdvancedIconSelector-KeywordData"
+local ADDON_NAME = "BetterIconSelector-KeywordData"
 
 -- Do NOT change the MAJOR_VERSION string to the name of your addon, however,
 -- as this is used to obtain the most up-to-date keyword data, regardless of

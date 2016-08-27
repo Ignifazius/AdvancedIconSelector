@@ -213,9 +213,9 @@ function lib:LoadKeywords(addonName)
 
 	-- Then, get the revision # of the default library (if it's enabled and loadable).
 	local defaultRevision = nil
-	local defaultLoadable = select(5, GetAddOnInfo("AdvancedIconSelector-KeywordData"))
+	local defaultLoadable = select(5, GetAddOnInfo("BetterIconSelector-KeywordData"))
 	if defaultLoadable then
-		defaultRevision = tonumber(GetAddOnMetadata("AdvancedIconSelector-KeywordData", "X-Revision"))
+		defaultRevision = tonumber(GetAddOnMetadata("BetterIconSelector-KeywordData", "X-Revision"))
 	end
 
 	-- Finally, get the revision that is already loaded.
@@ -230,8 +230,8 @@ function lib:LoadKeywords(addonName)
 	
 	-- Otherwise, load the default library if it's newer than the current library.
 	elseif defaultRevision and (not currentRevision or defaultRevision > currentRevision) then
-		LoadAddOn("AdvancedIconSelector-KeywordData")
-		source = "AdvancedIconSelector-KeywordData"
+		LoadAddOn("BetterIconSelector-KeywordData")
+		source = "BetterIconSelector-KeywordData"
 	end
 
 	-- Whatever happens, update keywordLibrary to point to the currently loaded instance.

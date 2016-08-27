@@ -1,5 +1,6 @@
 ﻿--[[========================================================================================
-      AdvancedIconSelector, a World of Warcraft icon selector replacement with search
+      BetterIconSelector (by Ignifazius) is a fork of 
+	  AdvancedIconSelector, a World of Warcraft icon selector replacement with search
       functionality.
       
       Copyright (c) 2011 - 2012 David Forrester  (Darthyl of Bronzebeard-US)
@@ -24,12 +25,13 @@
       THE SOFTWARE.
     ========================================================================================]]
 
-AdvancedIconSelector = LibStub("AceAddon-3.0"):NewAddon("AdvancedIconSelector", "AceConsole-3.0")
+BetterIconSelector = LibStub("AceAddon-3.0"):NewAddon("BetterIconSelector", "AceConsole-3.0")
 local lib = LibStub("LibAdvancedIconSelector-1.0")
 if not lib.GetRevision or lib.GetRevision() < 3 then error("You are using an old, incompatible version of LibAdvancedIconSelector-1.0 - please update it!") end
-lib:Embed(AdvancedIconSelector)
+lib:Embed(BetterIconSelector)
 local L = LibStub("AceLocale-3.0"):GetLocale("AdvancedIconSelector", true)
-local AIS = AdvancedIconSelector
+local AIS = BetterIconSelector
+local keywordAddonName = "BetterIconSelector-KeywordData"
 
 local DEBUG = false
 function AIS:Debug(...)
@@ -56,7 +58,7 @@ function AIS:OnInitialize()
 	if not AIS_EventFrame then
 		AIS_EventFrame = CreateFrame("Frame")
 		AIS_EventFrame:RegisterEvent("ADDON_LOADED")
-		local function f() if ArkInventory and ArkInventory.LISTEN_VAULT_ENTER then hooksecurefunc(ArkInventory, "LISTEN_VAULT_ENTER", AdvancedIconSelector_ReplaceGuildBankPopup) end end
+		local function f() if ArkInventory and ArkInventory.LISTEN_VAULT_ENTER then hooksecurefunc(ArkInventory, "LISTEN_VAULT_ENTER", BetterIconSelector_ReplaceGuildBankPopup) end end
 		f()
 		AIS_EventFrame:SetScript("OnEvent", function(self,e,a)
 			if a == "ArkInventory" then f() end
@@ -73,15 +75,15 @@ function AIS:OnSlashCommand(input)
 				{ "ItemIcons", L["Item icons"] }
 			}
 		}
-		AIS.iconBrowser = AIS:CreateIconSelectorWindow("AIS_IconBrowser", nil, options)
+		AIS.iconBrowser = AIS:CreateIconSelectorWindow("AIS_IconBrowser", keywordAddonName, options)
 		AIS.iconBrowser:SetPoint("CENTER")
 	end
 	AIS.iconBrowser:Show()
 end
 
 -- If your addon doesn't ever load the Guild Bank UI via GuildBankFrame_LoadUI(),
--- you may need to call this function to tell AdvancedIconSelector to replace the
+-- you may need to call this function to tell BetterIconSelector to replace the
 -- guild bank tab icon selector.
-function AdvancedIconSelector_ReplaceGuildBankPopup()
+function BetterIconSelector_ReplaceGuildBankPopup()
 	AIS.GuildBankPopup:ReplaceGuildBankPopup()
 end

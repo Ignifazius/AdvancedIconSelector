@@ -1,4 +1,5 @@
 ﻿--[[========================================================================================
+	  BetterIconSelector (by Ignifazius) is a fork of 
       AdvancedIconSelector, a World of Warcraft icon selector replacement with search
       functionality.
       
@@ -24,10 +25,10 @@
       THE SOFTWARE.
     ========================================================================================]]
 
-local AIS = AdvancedIconSelector
+local AIS = BetterIconSelector
 AIS.MacroPopup = { }
 local MacroPopup = AIS.MacroPopup
-local L = LibStub("AceLocale-3.0"):GetLocale("AdvancedIconSelector", true)
+local L = LibStub("AceLocale-3.0"):GetLocale("BetterIconSelector", true)
 
 local replaced = false
 local popup
